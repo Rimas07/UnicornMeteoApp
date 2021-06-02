@@ -1,0 +1,21 @@
+{
+  
+  "uuSubAppDataStore": {
+    "primary": {
+      "type": "uuAppObjectStore",
+      "realization": "MongoDB",
+      "schemaMap": {
+        "meteoappMain": {
+          "realization": "dao/MeteoMainMongo",
+          "maxNoi": 1024
+        },
+        "gateway":{
+          "realization": "dao/GatewayMongo",
+          "maxNoi": 1024
+        }
+
+        
+      }
+    }
+  }
+}
