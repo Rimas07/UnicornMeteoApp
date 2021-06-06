@@ -1,8 +1,11 @@
 "use strict";
 const MeteoappMainUseCaseError = require("./meteoapp-main-use-case-error.js");
+const METEO_APP_MAIN_ERROR_PREFIX = `${MeteoappMainUseCaseError.ERROR_PREFIX}/MeteoappMain`
 
 const Init = {
-  UC_CODE: `${MeteoappMainUseCaseError.ERROR_PREFIX}init/`,
+  UC_CODE: `${METEO_APP_MAIN_ERROR_PREFIX}init/`,
+
+ 
 
   InvalidDtoIn: class extends MeteoappMainUseCaseError {
     constructor() {
@@ -21,14 +24,6 @@ const Init = {
     }
   },
 
-  SetProfileFailed: class extends MeteoappMainUseCaseError {
-    constructor() {
-      super(...arguments);
-      this.code = `${Init.UC_CODE}sys/setProfileFailed`;
-      this.message = "Set profile failed.";
-    }
-  },
-
   CreateAwscFailed: class extends MeteoappMainUseCaseError {
     constructor() {
       super(...arguments);
@@ -36,6 +31,8 @@ const Init = {
       this.message = "Create uuAwsc failed.";
     }
   },
+
+  
 };
 
 module.exports = {

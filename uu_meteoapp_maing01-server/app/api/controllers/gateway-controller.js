@@ -5,7 +5,7 @@ class GatewayController {
 
     create(ucEnv) {
       
-      return GatewayAbl.create(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession(), ucEnv.getAuthorizationResult());
+      return GatewayAbl.create(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), );
     }    
 
 

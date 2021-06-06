@@ -13,8 +13,10 @@ const initDtoInType = shape({
   });
   
   const GatewayCreateDtoInType = shape({
-    name: uu5String(255).isRequired(),
-    text: uu5String(4000)
+    code: code(),
+    name: string(200),
+    location: gps(),
+    
   });
 
   const GatewayListDtoInType = shape({
