@@ -64,11 +64,11 @@ class MeasurmentAbl {
     // hds 2.2
     let dtoOut;
     try {
-      dtoOut = await this.dao.insert(dtoIn);
+      dtoOut = await this.dao.create(dtoIn);
     } catch (e) {
       if (e instanceof ObjectStoreError) {
         // A3
-        throw new Errors.Insert.MesurmentDaoInsertFailed({ uuAppErrorMap }, e);
+        throw new Errors.Create.MeasurmentDaoInsertFailed({ uuAppErrorMap }, e);
       }
       throw e;
     }
