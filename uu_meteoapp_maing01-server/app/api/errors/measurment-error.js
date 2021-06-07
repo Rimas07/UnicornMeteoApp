@@ -8,14 +8,14 @@ const Create = {
   InvalidDtoIn: class extends GatewayMainUseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Insert.UC_CODE}invalidDtoIn`;
+      this.code = `${Create.UC_CODE}invalidDtoIn`;
       this.message = 'DtoIn is not valid.';
     }
   },
   MeasurmentDaoInsertFailed: class extends GatewayMainUseCaseError{
     constructor() {
       super(...arguments);
-      this.code = `${Insert.UC_CODE}mongoFail`;
+      this.code = `${Create.UC_CODE}mongoFail`;
       this.message = "Couldn't save data to mongoDB.";
     }
   },
@@ -23,7 +23,6 @@ const Create = {
 
 
 module.exports = {
+Create
 
-
-    Create,
 }

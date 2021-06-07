@@ -9,7 +9,7 @@
   "devkit": {
     "development": {
       "appBoxLocationUri": "ues:UCL-BT:OPR.RSP/APPBOXES",
-      "appDeploymentUri": null
+      "appDeploymentUri": "URI: ues:UCL-BT[118500965363973101]:UUN_STUDENTS01_AWE[5f9fea37f439f9fab6743983]:UUN.BOT21SFT06.MAING01[60be12cff439f98c921e5da9]."
     }
   },
   "uu_meteoapp_maing01-hi": {},

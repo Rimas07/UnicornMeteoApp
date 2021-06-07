@@ -35,14 +35,12 @@ class MeasurmentAbl {
   }
   async create(dtoIn) {
     // hds 1, 1.1
-    let validationResult = this.validator.validate("MeasurmentInsertDtoInType", dtoIn);
-
-    // hds 1.2, 1.3 // A1, A2
+    let validationResult = this.validator.validate("MeasurmentCreateDtoInType", dtoIn);
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
       WARNINGS.createUnsupportedKeys.code,
-      Errors.Insert.InvalidDtoIn
+      Errors.Create.InvalidDtoIn
     );
 
     if (Array.isArray(dtoIn)) {
@@ -51,14 +49,14 @@ class MeasurmentAbl {
         expireAt.setDate(expireAt.getDate() + 3);
         entry.timestamp = new Date(entry.timestamp);
         entry.expireAt = expireAt;
-        entry.deviceId = `${associatedDevice.id}`;
+        
       });
     } else {
       let expireAt = new Date(entry.timestamp);
       expireAt.setDate(expireAt.getDate() + 3);
       dtoIn.timestamp = new Date(dtoIn.timestamp);
       dtoIn.expireAt = expireAt;
-      entry.GatewayId = `${associatedGateway.id}`;
+    
     }
 
     // hds 2.2
@@ -68,7 +66,7 @@ class MeasurmentAbl {
     } catch (e) {
       if (e instanceof ObjectStoreError) {
         // A3
-        throw new Errors.Create.MeasurmentDaoInsertFailed({ uuAppErrorMap }, e);
+        throw new Errors.Create.MeasurmentDaoCreateFailed({ uuAppErrorMap }, e);
       }
       throw e;
     }

@@ -7,7 +7,6 @@
   "dependencies": {
     "dayjs": "^1.10.5",
     "lodash.defaultsdeep": "^4.6.1",
-    "uu_appg01_binarystore-cmd": "^3.0.0",
     "uu_appg01_server": "^5.0.0",
     "uu_apprepresentationg01": "^2.0.0",
     "uuid": "^8.3.2"
