@@ -1,6 +1,6 @@
 {
   "name": "uu_meteoapp_maing01-server",
-  "version": "0.1.0",
+  "version": "0.2.0-DEV",
   "description": "",
   "license": "License Commercial",
   "spec": "nodejs-app; uu_appg01_devkit@4.1.1",

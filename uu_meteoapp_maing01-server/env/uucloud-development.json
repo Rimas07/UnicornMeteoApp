@@ -3,7 +3,7 @@
   "schemaSpecificationUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/bef682626ed943f28cde360ccb325981/book/page?code=uuSubAppInstanceDescriptor",
   "uuSubApp": {
     "code": "UUN.BOT21SFT06.MAING01",
-    "version": "0.1.0",
+    "version": "0.2.0-DEV",
     "name": "uuMeteoappMaing01",
     "description": "",
     "license": "License Commercial",
@@ -17,7 +17,7 @@
           "min": 1,
           "max": 1
         },
-        "appPackUri": null,
+        "appPackUri": "ues:UCL-BT:UUN.BOT21SFT06.MAING01/APPBOX-0.2.0-DEV:UUN.BOT21SFT06.MAING01/CMD-PACK",
         "runtimeStack": "UU.APPG01/APPSERVER_NODEJS_STACK-1.6"
       }
     },
@@ -30,28 +30,24 @@
       }
     },
     "uuConfigMap": {
-      "asid_license_owner_list": ["25-219-1"]
-
+      "asid_license_owner_list": [
+        "26-6999-1"
+      ]
     }
   },
-  "uuSubAppInstance" : {
-    "asid" : "652406b31d954a5c91734918befa934c",
-    "asidOwner" : "18-7437-1",
-    "awidList" : [ {
-      "awid" : "a82309eef0b04b4887c9321e74decd70",
-      "awidOwner" : "18-7438-1"
-    } ],
-    "uuAppObjectStoreMap" : {
-      "OSID_1" : {
-        "osid" : "7e1f61afbe2b4bbfbe9295d2490ddf2f"
+  "uuSubAppInstance": {
+    "asid": "c5d9ab2deb40409bb17bf31717c93ee0",
+    "asidOwner": "26-6999-1",
+    "awidList": [
+      {
+        "awid": "a989409053a44fef9c9dce38827c6ea5",
+        "awidOwner": "26-7006-1"
+      }
+    ],
+    "uuAppObjectStoreMap": {
+      "OSID_1": {
+        "osid": "7e1f61afbe2b4bbfbe9295d2490ddf2f"
       }
     }
-    
   }
 }
-
-
-
-
-
-
