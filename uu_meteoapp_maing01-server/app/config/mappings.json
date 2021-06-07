@@ -1,15 +1,24 @@
 {
   "{vendor}-{uuApp}-{uuSubApp}": {
     "useCaseMap": {
-      
       "gateway/create": {
         "realization": "api/controllers/GatewayController.create",
         "httpMethod": ["POST"],
         "type": "CMD"
       },
-      "gateway/list" : {
+      "gateway/list": {
         "realization": "api/controllers/GatewayController.list",
         "httpMethod": ["GET"],
+        "type": "CMD"
+      },
+      "gateway/delete": {
+        "realization": "api/controllers/GatewayController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "measurment/create": {
+        "realization": "api/controllers/MeasurmentController.create",
+        "httpMethod": ["POST"],
         "type": "CMD"
       },
       "sys/uuAppWorkspace/init": {
@@ -32,11 +41,6 @@
         "httpMethod": "GET",
         "type": "UVE"
       }
-       
-          }
-        }
-      }
-
-    
-  
-
+    }
+  }
+}

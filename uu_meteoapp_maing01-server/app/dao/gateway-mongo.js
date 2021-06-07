@@ -11,13 +11,19 @@ class GatewayMongo extends UuObjectDao {
   async create(uuObject) {
     return await super.insertOne(this._prepareObject(uuObject));
   }
+  async list(awid, pageInfo = {}) {
+    const filter = { awid };
+    return await super.find(filter, pageInfo);
+  }
+ 
   _prepareObject(uuObject) {
     return uuObject;
   }
-      async listByVisibility(awid, visibility, pageInfo = {}) {
-        return await super.find({awid, visibility}, pageInfo);
-      }
-    }
-    
+  delete({id: GatewayIds}) {
+    return super.deleteMany({
+      _id: { $in: GatewayIds }
+    })
+  }
+}
   
     module.exports = GatewayMongo;

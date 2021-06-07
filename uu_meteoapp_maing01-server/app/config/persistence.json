@@ -11,7 +11,11 @@
         },
         "gateway":{
           "realization": "dao/GatewayMongo",
-          "maxNoi": 1024
+          "maxNoi": 100
+        },
+        "measurment":{
+          "realization": "dao/MeasurmentMongo",
+          "maxNoi": 100
         }
 
         

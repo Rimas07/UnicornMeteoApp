@@ -2,14 +2,14 @@
   "schemaVersion": "1.0.0",
   "schemaSpecificationUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/bef682626ed943f28cde360ccb325981/book/page?code=uuSubAppInstanceDescriptor",
   "uuSubApp": {
-    "code": "UU.METEOAPP.MAING01",
+    "code": "UUN.BOT21SFT06.MAING01",
     "version": "0.1.0",
     "name": "uuMeteoappMaing01",
     "description": "",
     "license": "License Commercial",
     "asidRequired": true,
     "awidCount": 1,
-    "resourcePoolUri": "----- VALUE REQUIRED -----",
+    "resourcePoolUri": "ues:UCL-BT:UUN_STUDENTS01_AWE",
     "uuAppNodeSetMap": {
       "CMD": {
         "nodeSize": "G1_S",
@@ -30,6 +30,28 @@
       }
     },
     "uuConfigMap": {
+      "asid_license_owner_list": ["25-219-1"]
+
     }
+  },
+  "uuSubAppInstance" : {
+    "asid" : "652406b31d954a5c91734918befa934c",
+    "asidOwner" : "18-7437-1",
+    "awidList" : [ {
+      "awid" : "a82309eef0b04b4887c9321e74decd70",
+      "awidOwner" : "18-7438-1"
+    } ],
+    "uuAppObjectStoreMap" : {
+      "OSID_1" : {
+        "osid" : "7e1f61afbe2b4bbfbe9295d2490ddf2f"
+      }
+    }
+    
   }
 }
+
+
+
+
+
+

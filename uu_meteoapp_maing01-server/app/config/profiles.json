@@ -1,13 +1,11 @@
 {
   "{asid}": {
     "profileList": ["AsidAuthorities", "AsidExecutives", "AsidLicenseOwner", "Public"],
-    "useCaseMap": {
-    }
+    "useCaseMap": {}
   },
   "*": {
     "profileList": ["Authorities", "Executives", "AwidLicenseOwner", "Public"],
     "useCaseMap": {
-
       "gateway/create": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
@@ -16,6 +14,17 @@
         "sysStateList": ["active"],
         "profileList": ["Public"]
       },
+
+      "gateway/delete": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+
+      "measurment/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+
       "sys/uuAppWorkspace/init": {
         "sysStateList": ["created"],
         "profileList": ["AwidLicenseOwner"]
@@ -75,8 +84,6 @@
         "sysStateList": ["active"],
         "profileList": ["Public"]
       }
-       
-      }
     }
   }
-
+}

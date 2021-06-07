@@ -12,6 +12,15 @@ class GatewayController {
     list(ucEnv) {
       return GatewayAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());    
     }
+    get(ucEnv) {
+      return GatewayAbl.get(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+    }
+
+
+    delete(ucEnv) {
+      return GatewayAbl.delete(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+    }
+  
     }
 
 

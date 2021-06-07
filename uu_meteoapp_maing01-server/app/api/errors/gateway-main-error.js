@@ -34,6 +34,25 @@ const Create = {
   },
 };
 
+
+
+const Delete = {
+  UC_CODE: `${GATEWAY_ERROR_PREFIX}Delete/`,
+  GatewayDaoDeleteFailed: class extends GatewayMainUseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Create.UC_CODE}mongoError`;
+      this.message = 'There was an error while removing device, please try again later.';
+    }
+  },
+};
+
+
+
+
+
+
+
 const List = {
   UC_CODE: `${GatewayMainUseCaseError.ERROR_PREFIX}gateway/list/`,
 
@@ -54,7 +73,10 @@ const List = {
   },
 };
 
+
+
 module.exports = {
   Create,
   List,
+  Delete
 };

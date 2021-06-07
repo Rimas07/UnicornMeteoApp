@@ -5,7 +5,6 @@ const { LoggerFactory } = require("uu_appg01_server").Logging;
 const logger = LoggerFactory.get("GatewayAbl");
 const Errors = require("../api/errors/gateway-main-error.js");
 
-const random = require("crypto-random-string");
 const defaultsDeep = require("lodash.defaultsdeep");
 
 const WARNINGS = {
@@ -14,6 +13,9 @@ const WARNINGS = {
   },
   listUnsupportedKeys: {
     code: `${Errors.List.UC_CODE}unsupportedKeys`,
+  },
+  deleteUnsupportedKeys: {
+    code: `${Errors.Delete.UC_CODE}unsupportedKeys`,
   },
 };
 
@@ -29,20 +31,16 @@ class GatewayAbl {
   }
 
   async create(awid, dtoIn) {
-   
-
     // 2
     let validationResult = this.validator.validate("GatewayCreateDtoInType", dtoIn);
-    let uuAppErrorMap = ValidationHelper.processValidationResult(dtoIn, validationResult,
-      WARNINGS.createUnsupportedKeys.code, Errors.Create.InvalidDtoIn);
-
-    
-
-    
-    const enteredCode = dtoIn.hasOwnProperty("code");
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.createUnsupportedKeys.code,
+      Errors.Create.InvalidDtoIn
+    );
 
     const defaults = {
-      code: await this._generateUniqueCode(awid),
       name: "",
       location: null,
       locationDesc: "",
@@ -51,27 +49,10 @@ class GatewayAbl {
     dtoIn = defaultsDeep(dtoIn, defaults);
 
     // 3
-    if (enteredCode) {
-      const existingGatewayByCode = await this.dao.getByCode(awid, dtoIn.code);
-      if (existingGatewayByCode) {
-        throw new Errors.Create.CodeIsNotUnique({ uuAppErrorMap }, { awid, code: dtoIn.code });
-      }
-    }
-   
-    // 3
     let gateway = { ...dtoIn };
     const gatewayDefaults = {
       awid,
       state: "created",
-      today: {
-        temperature: null,
-        humidity: null,
-        timestamp: null,
-      },
-      tommorow: {
-        temperature: null,
-        humidity: null,
-      },
     };
     gateway = defaultsDeep(gateway, gatewayDefaults);
     try {
@@ -88,41 +69,95 @@ class GatewayAbl {
     return dtoOut;
   }
 
-  async list(awid, dtoIn) {
-    // hds 1, 1.1
-    let validationResult = this.validator.validate("GatewayListDtoInType", dtoIn);
-
-    // hds 1.2, 1.3 // A1, A2
+  async get(awid, dtoIn) {
+    // 2
+    let validationResult = this.validator.validate("GatewayGetDtoInType", dtoIn);
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
-      WARNINGS.listUnsupportedKeys.code,
-      Errors.List.InvalidDtoIn
+      WARNINGS.get.unsupportedKeys.code,
+      Errors.Get.InvalidDtoIn
     );
 
+    // 3
+    let gateway;
+    let identifier;
+    if (dtoIn.id) {
+      identifier = "id";
+      gateway = await this.dao.get(awid, dtoIn.id);
+    }
+
+    if (!gateway) {
+      const errorParams = {
+        awid,
+        [identifier]: dtoIn[identifier],
+      };
+      throw new Errors.Get.GatewayDoesNotExist({ uuAppErrorMap }, errorParams);
+    }
+
+    // 4
+    let dtoOut = { ...gateway, uuAppErrorMap };
+    return dtoOut;
+  }
+
+  async delete(dtoIn) {
+    // hds 1, 1.1
+    let validationResult = this.validator.validate("GatewayDeleteDtoInType", dtoIn);
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.deleteUnsupportedKeys.code,
+      Errors.Delete.InvalidDtoIn
+    );
+
+    if (!Array.isArray(dtoIn.id)) dtoIn.id = [dtoIn.id];
+
     // hds 2
-    let dtoOut = await this.dao.listByVisibility(awid, true, dtoIn.pageInfo);
+    let dtoOut;
+    try {
+      dtoOut = await this.dao.delete(dtoIn);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+        // A3
+        throw new Errors.Delete.GatewayDaoDeleteFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
 
     // hds 3
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut;
   }
+  async list(awid, dtoIn) {
+    // 2
+    let validationResult = this.validator.validate("GatewayListDtoInType", dtoIn);
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.listUnsupportedKeys.code,
+      Errors.Create.InvalidDtoIn
+    );
 
-  async _generateUniqueCode(awid) {
-    let code = null;
-    let instance = null;
-    do {
-      code = random(10);
-    
-    } while (instance !== null);
-    return code;
+    const defaults = {
+      pageInfo: {
+        pageIndex: 0,
+        pageSize: 100,
+      },
+    };
+    dtoIn = defaultsDeep(dtoIn, defaults);
+
+    // 4
+    let dtoOut;
+    if (dtoIn.state) {
+      dtoOut = await this.dao.listByState(awid, dtoIn.state, dtoIn.pageInfo);
+    } else {
+      dtoOut = await this.dao.list(awid, dtoIn.pageInfo);
+    }
+
+    // 5
+    dtoOut.uuAppErrorMap = uuAppErrorMap;
+    return dtoOut;
   }
-
-
-
-
-
-
 }
 
 module.exports = new GatewayAbl();
