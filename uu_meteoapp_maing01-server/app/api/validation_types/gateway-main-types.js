@@ -13,11 +13,23 @@ const initDtoInType = shape({
 });
 
 const GatewayCreateDtoInType = shape({
- 
+  code: code(),
   name: string(200),
   location: gps(),
-  city: string(200),
-  district: string(200),
+  locationDesc: string(200),
+  timezone: string(100).isRequired(),
+ 
+});
+
+const GatewayUpdateDtoInType = shape({
+  id: id().isRequired(),
+  name: string(200),
+  location: gps(),
+  locationDesc: string(200),
+  timezone: string(100),
+  code: code(),
+  uuEe: uuIdentity(),
+  state: oneOf(["active", "closed"])
 });
 
 const GatewayDeleteDtoInType = shape({

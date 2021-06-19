@@ -1,16 +1,25 @@
 {
   "product": "uu_meteoapp_maing01",
-  "version": "0.2.0-DEV",
+  "version": "0.2.2-DEV",
   "license": "License Commercial",
   "description": {
     "en": "",
     "cs": ""
   },
+  "docUri": "",
+  "flsUri": "",
+  "imageUri": "",
   "devkit": {
     "development": {
       "appBoxLocationUri": "ues:UCL-BT:OPR.RSP/APPBOXES",
-      "appDeploymentUri": "URI: ues:UCL-BT[118500965363973101]:UUN_STUDENTS01_AWE[5f9fea37f439f9fab6743983]:UUN.BOT21SFT06.MAING01[60be12cff439f98c921e5da9]."
+      "appDeploymentUri": "ues:UCL-BT[118500965363973101]:UUN_STUDENTS01_AWE[5f9fea37f439f9fab6743983]:UUN.BOT21SFT06.MAING01[60be12cff439f98c921e5da9]",
+      "resourcePoolUri": "----- VALUE REQUIRED -----"
     }
+  },
+  "uu_meteoapp_maing01": {
+    "namespace": "UuMeteoappMain",
+    "sourceUri": "https://cdn.plus4u.net/uu-meteoapp-maing01/%s/uu_meteoapp_maing01.min.js",
+    "componentList": []
   },
   "uu_meteoapp_maing01-hi": {},
   "uu_meteoapp_maing01-server": {}

@@ -8,6 +8,15 @@ class GatewayController {
       return GatewayAbl.create(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), );
     }    
 
+    update(ucEnv) {
+      return GatewayAbl.update(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+    }
+  
+
+
+
+
+
 
     list(ucEnv) {
       return GatewayAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());    

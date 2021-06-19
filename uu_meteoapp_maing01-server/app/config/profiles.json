@@ -24,6 +24,10 @@
         "sysStateList": ["active"],
         "profileList": ["Public"]
       },
+      "gateway/update": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
 
       "sys/uuAppWorkspace/init": {
         "sysStateList": ["created"],

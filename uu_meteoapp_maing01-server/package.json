@@ -1,17 +1,21 @@
 {
   "name": "uu_meteoapp_maing01-server",
-  "version": "0.2.0-DEV",
+  "version": "0.2.2-DEV",
   "description": "",
   "license": "License Commercial",
   "spec": "nodejs-app; uu_appg01_devkit@4.1.1",
   "dependencies": {
+    "dates-helper-js": "^1.0.4",
     "dayjs": "^1.10.5",
     "lodash.defaultsdeep": "^4.6.1",
+    "moment-timezone": "^0.5.33",
+    "random": "^3.0.6",
     "uu_appg01_server": "^5.0.0",
     "uu_apprepresentationg01": "^2.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "moment-timezone-data-webpack-plugin": "^1.5.0",
     "uu_appg01_devkit": "^4.1.1",
     "uu_appg01_server-test": "^5.0.0"
   },

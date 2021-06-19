@@ -1,23 +1,18 @@
 {
-  "name": "uu_meteoapp_maing01-hi",
+  "name": "uu_meteoapp_maing01",
   "version": "0.2.2-DEV",
-  "private": true,
   "description": "",
   "license": "License Commercial",
-  "namespace": "UuMeteoapp",
-  "spec": "uu5-app; uu_appg01_devkit@4.1.1",
+  "namespace": "UuMeteoappMain",
+  "spec": "uu5-lib; uu_appg01_devkit@4.2.1",
   "dependencies": {
-    "systemjs": "0.19.47",
-    "uu5g04": "^1.19.0",
-    "uu_plus4u5g01": "^4.0.0",
-    "uu_contentkitg01": "^2.0.0",
-    "uu_territoryg01": "^1.0.0"
+    "uu5g04": "^1.19.0"
   },
   "uuBuildSettings": {
     "externals": {}
   },
   "devDependencies": {
-    "uu_appg01_devkit": "^4.1.1"
+    "uu_appg01_devkit": "^4.2.1"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -31,10 +26,12 @@
     "prettify": "uu_appg01_devkit prettify",
     "vulnerabilityScan": "uu_appg01_devkit vulnerabilityScan",
     "generate": "uu_appg01_devkit generate",
-    "lsiExport": "uu_appg01_devkit lsiExport",
-    "lsiImport": "uu_appg01_devkit lsiImport",
     "uuAppDevKitUpgrade": "uu_appg01_devkit uuAppDevKitUpgrade"
   },
+  "main": "src/index.js",
+  "files": [
+    "dist*"
+  ],
   "prettier": {
     "printWidth": 120
   }

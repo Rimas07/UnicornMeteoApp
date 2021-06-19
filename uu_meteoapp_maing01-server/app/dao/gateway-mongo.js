@@ -19,6 +19,14 @@ class GatewayMongo extends UuObjectDao {
   _prepareObject(uuObject) {
     return uuObject;
   }
+  async getByCode(awid, code) {
+    const filter = { awid, code };
+    return await super.findOne(filter);
+  }
+
+
+
+
   delete({id: GatewayIds}) {
     return super.deleteMany({
       _id: { $in: GatewayIds }
